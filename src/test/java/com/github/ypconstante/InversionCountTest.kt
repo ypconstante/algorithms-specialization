@@ -12,7 +12,7 @@ class InversionCountTest {
     fun countInversionsEmptyArray() {
         val input = intArrayOf()
         val actual = inversionCount.count(input)
-        val expected = 0
+        val expected = 0L
         assertEquals(expected, actual)
     }
 
@@ -20,7 +20,7 @@ class InversionCountTest {
     fun countInversionsArrayWith1Element() {
         val input = intArrayOf(1)
         val actual = inversionCount.count(input)
-        val expected = 0
+        val expected = 0L
         assertEquals(expected, actual)
     }
 
@@ -28,7 +28,7 @@ class InversionCountTest {
     fun countInversionsArrayWith2ElementsAlreadySorted() {
         val input = intArrayOf(1, 2)
         val actual = inversionCount.count(input)
-        val expected = 0
+        val expected = 0L
         assertEquals(expected, actual)
     }
 
@@ -36,7 +36,7 @@ class InversionCountTest {
     fun countInversionsArrayWith2ElementsReversed() {
         val input = intArrayOf(2, 1)
         val actual = inversionCount.count(input)
-        val expected = 1
+        val expected = 1L
         assertEquals(expected, actual)
     }
 
@@ -44,7 +44,7 @@ class InversionCountTest {
     fun countInversionsArrayWith2ElementsRepeatedValues() {
         val input = intArrayOf(1, 1)
         val actual = inversionCount.count(input)
-        val expected = 0
+        val expected = 0L
         assertEquals(expected, actual)
     }
 
@@ -52,7 +52,7 @@ class InversionCountTest {
     fun countInversionsArrayWith3ElementsAlreadySorted() {
         val input = intArrayOf(1, 2, 3)
         val actual = inversionCount.count(input)
-        val expected = 0
+        val expected = 0L
         assertEquals(expected, actual)
     }
 
@@ -60,7 +60,7 @@ class InversionCountTest {
     fun countInversionsArrayWith3ElementsReversed() {
         val input = intArrayOf(3, 2, 1)
         val actual = inversionCount.count(input)
-        val expected = 3
+        val expected = 3L
         assertEquals(expected, actual)
     }
 
@@ -68,7 +68,7 @@ class InversionCountTest {
     fun countInversionsArrayWith3ElementsElementsInTheBeginOutOfOrder() {
         val input = intArrayOf(2, 1, 3)
         val actual = inversionCount.count(input)
-        val expected = 1
+        val expected = 1L
         assertEquals(expected, actual)
     }
 
@@ -76,7 +76,7 @@ class InversionCountTest {
     fun countInversionsArrayWith3ElementsElementsInTheEndOutOfOrder() {
         val input = intArrayOf(1, 3, 2)
         val actual = inversionCount.count(input)
-        val expected = 1
+        val expected = 1L
         assertEquals(expected, actual)
     }
 
@@ -84,7 +84,7 @@ class InversionCountTest {
     fun countInversionsArrayWith3ElementsRepeatedValues() {
         val input = intArrayOf(1, 1, 3)
         val actual = inversionCount.count(input)
-        val expected = 0
+        val expected = 0L
         assertEquals(expected, actual)
     }
 
@@ -92,7 +92,7 @@ class InversionCountTest {
     fun countInversionsArrayWith4ElementsAlreadySorted() {
         val input = intArrayOf(1, 2, 3, 4)
         val actual = inversionCount.count(input)
-        val expected = 0
+        val expected = 0L
         assertEquals(expected, actual)
     }
 
@@ -100,7 +100,7 @@ class InversionCountTest {
     fun countInversionsArrayWith4ElementsReversed() {
         val input = intArrayOf(4, 3, 2, 1)
         val actual = inversionCount.count(input)
-        val expected = 6
+        val expected = 6L
         assertEquals(expected, actual)
     }
 
@@ -108,7 +108,7 @@ class InversionCountTest {
     fun countInversionsArrayWith4ElementsElementsInTheBeginOutOfOrder() {
         val input = intArrayOf(2, 1, 3, 4)
         val actual = inversionCount.count(input)
-        val expected = 1
+        val expected = 1L
         assertEquals(expected, actual)
     }
 
@@ -116,7 +116,7 @@ class InversionCountTest {
     fun countInversionsArrayWith4ElementsElementsInTheMiddleOutOfOrder() {
         val input = intArrayOf(1, 3, 2, 4)
         val actual = inversionCount.count(input)
-        val expected = 1
+        val expected = 1L
         assertEquals(expected, actual)
     }
 
@@ -124,7 +124,7 @@ class InversionCountTest {
     fun countInversionsArrayWith4ElementsElementsInTheEndOutOfOrder() {
         val input = intArrayOf(1, 2, 4, 3)
         val actual = inversionCount.count(input)
-        val expected = 1
+        val expected = 1L
         assertEquals(expected, actual)
     }
 
@@ -132,7 +132,7 @@ class InversionCountTest {
     fun countInversionsArrayWith4ElementsRepeatedValues() {
         val input = intArrayOf(1, 2, 2, 4)
         val actual = inversionCount.count(input)
-        val expected = 0
+        val expected = 0L
         assertEquals(expected, actual)
     }
 }
