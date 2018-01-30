@@ -19,7 +19,7 @@ class MergeSortWithCallback<T : Comparable<T>>(
         val merged = ArrayList<T>(mergedArraySize)
         var firstArrayIndex = 0
         var secondArrayIndex = 0
-        for (i in IntRange(0, mergedArraySize - 1)) {
+        for (i in 0..(mergedArraySize - 1)) {
             val firstArrayFinished = firstArray.size == firstArrayIndex
             val secondArrayFinished = secondArray.size == secondArrayIndex
             var insertedValueSource: InsertedValueSource
@@ -43,7 +43,7 @@ class MergeSortWithCallback<T : Comparable<T>>(
     }
 
 
-    interface MergeCallback<T> {
+    interface MergeCallback<in T> {
         fun onMerge(
             insertedValueSource: InsertedValueSource, insertedValueIndex: Int,
             firstArray: List<T>, firstArrayIndex: Int,

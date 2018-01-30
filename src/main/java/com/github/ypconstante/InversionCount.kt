@@ -3,7 +3,7 @@ package com.github.ypconstante
 class InversionCount {
     fun count(array: List<Int>): Long {
         val inversionCountMergeCallback = InversionCountMergeCallback()
-        val sorter = MergeSortWithCallback<Int>(inversionCountMergeCallback)
+        val sorter = MergeSortWithCallback(inversionCountMergeCallback)
         sorter.sort(array)
         return inversionCountMergeCallback.inversionCount
     }
