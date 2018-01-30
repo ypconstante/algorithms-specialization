@@ -1,31 +1,34 @@
 package com.github.ypconstante
 
-class MergeSortWithCallback(private val callback: MergeCallback) {
+class MergeSortWithCallback<T : Comparable<T>>(
+    private val callback: MergeCallback<T> = EmptyMergeCallback()
+) {
 
-    fun sort(array: IntArray): IntArray {
+    fun sort(array: List<T>): List<T> {
         if (array.size <= 1) {
             return array
         } else {
-            val left = sort(array.sliceArray(IntRange(0, (array.size / 2) - 1)))
-            val right = sort(array.sliceArray(IntRange(array.size / 2, array.size - 1)))
+            val left = sort(array.subList(0, array.size / 2))
+            val right = sort(array.subList(array.size / 2, array.size))
             return merge(left, right)
         }
     }
 
-    private fun merge(firstArray: IntArray, secondArray: IntArray): IntArray {
-        val merged = IntArray(firstArray.size + secondArray.size)
+    private fun merge(firstArray: List<T>, secondArray: List<T>): List<T> {
+        val mergedArraySize = firstArray.size + secondArray.size
+        val merged = ArrayList<T>(mergedArraySize)
         var firstArrayIndex = 0
         var secondArrayIndex = 0
-        for (i in merged.indices) {
+        for (i in IntRange(0, mergedArraySize - 1)) {
             val firstArrayFinished = firstArray.size == firstArrayIndex
             val secondArrayFinished = secondArray.size == secondArrayIndex
             var insertedValueSource: InsertedValueSource
             if (!firstArrayFinished && (secondArrayFinished || firstArray[firstArrayIndex] <= secondArray[secondArrayIndex])) {
-                merged[i] = firstArray[firstArrayIndex]
+                merged.add(i, firstArray[firstArrayIndex])
                 firstArrayIndex++
                 insertedValueSource = InsertedValueSource.FIRST_ARRAY
             } else {
-                merged[i] = secondArray[secondArrayIndex]
+                merged.add(i, secondArray[secondArrayIndex])
                 secondArrayIndex++
                 insertedValueSource = InsertedValueSource.SECOND_ARRAY
             }
@@ -40,11 +43,11 @@ class MergeSortWithCallback(private val callback: MergeCallback) {
     }
 
 
-    interface MergeCallback {
+    interface MergeCallback<T> {
         fun onMerge(
             insertedValueSource: InsertedValueSource, insertedValueIndex: Int,
-            firstArray: IntArray, firstArrayIndex: Int,
-            secondArray: IntArray, secondArrayIndex: Int
+            firstArray: List<T>, firstArrayIndex: Int,
+            secondArray: List<T>, secondArrayIndex: Int
         )
     }
 
@@ -53,11 +56,11 @@ class MergeSortWithCallback(private val callback: MergeCallback) {
         SECOND_ARRAY,
     }
 
-    class EmptyMergeCallback : MergeCallback {
+    class EmptyMergeCallback<T> : MergeCallback<T> {
         override fun onMerge(
             insertedValueSource: InsertedValueSource, insertedValueIndex: Int,
-            firstArray: IntArray, firstArrayIndex: Int,
-            secondArray: IntArray, secondArrayIndex: Int
+            firstArray: List<T>, firstArrayIndex: Int,
+            secondArray: List<T>, secondArrayIndex: Int
         ) {
         }
     }

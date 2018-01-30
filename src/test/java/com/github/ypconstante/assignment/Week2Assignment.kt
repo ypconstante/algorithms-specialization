@@ -15,7 +15,7 @@ class Week2Assignment {
         val values = ArrayList<Int>()
         reader.useLines { lines -> lines.forEach { values.add(Integer.parseInt(it)) } }
 
-        val actual = InversionCount().count(values.toIntArray())
+        val actual = InversionCount().count(values)
         val expected = 2407905288L
 
         assertEquals(expected, actual)
