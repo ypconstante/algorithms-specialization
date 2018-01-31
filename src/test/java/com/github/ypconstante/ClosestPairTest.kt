@@ -3,13 +3,31 @@ package com.github.ypconstante
 import com.github.ypconstante.ClosestPair.Point
 import com.github.ypconstante.ClosestPair.PointPair
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertThrows
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestInstance
 import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.MethodSource
+import java.util.*
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class ClosestPairTest {
+    @Test
+    fun noPoints() {
+        assertThrows(
+            IllegalArgumentException::class.java,
+            { ClosestPair().closestPair(Collections.emptyList()) }
+        )
+    }
+
+    @Test
+    fun onePoints() {
+        assertThrows(
+            IllegalArgumentException::class.java,
+            { ClosestPair().closestPair(listOf(Point(1.0, 1.0))) }
+        )
+    }
+
     @Test
     fun twoPoints() {
         val p1 = Point(10.0, 20.0)

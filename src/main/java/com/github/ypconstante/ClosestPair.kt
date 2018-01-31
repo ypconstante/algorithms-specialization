@@ -27,7 +27,10 @@ class ClosestPair {
         val closestPairRight = closestPair(rightPointsOrderedByX, rightPointsOrderedByY)
         val closestPair = if (closestPairLeft.distance <= closestPairRight.distance) closestPairLeft else closestPairRight
         val closestSplitPair = closestSplitPair(pointsOrderedByY, lastLeftPointX, firstRightPointX, closestPair)
-        return if (closestPair.distance < closestSplitPair.distance) closestPair else closestSplitPair
+        return if (closestPair.distance <= closestSplitPair.distance)
+            closestPair
+        else
+            closestSplitPair
     }
 
     private fun closestSplitPair(
@@ -62,7 +65,7 @@ class ClosestPair {
 
     fun bruteForce(points: Collection<Point>): PointPair {
         if (points.size <= 1) {
-            throw RuntimeException("points size must be >= 2")
+            throw IllegalArgumentException("points size must be >= 2")
         }
         if (points.size == 2) {
             return PointPair.createInstance(points.first(), points.last())
@@ -100,8 +103,8 @@ class ClosestPair {
     data class Point(val x: Double, val y: Double) {
         companion object {
 
-            val comparatorXY: Comparator<Point> = Comparator.comparing(Point::x).thenComparing(Point::y)!!
-            val comparatorYX: Comparator<Point> = Comparator.comparing(Point::y).thenComparing(Point::x)!!
+            val comparatorXY: Comparator<Point> = Comparator.comparing(Point::x).thenComparing(Point::y)
+            val comparatorYX: Comparator<Point> = Comparator.comparing(Point::y).thenComparing(Point::x)
 
             fun distance(p1: Point, p2: Point): Double {
                 return Math.sqrt(
